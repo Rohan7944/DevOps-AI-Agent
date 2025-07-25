@@ -12,24 +12,6 @@ os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
 
 ## Prompt Template
 
-prompt=ChatPromptTemplate.from_template(
-"""
-You are a Terraform AI agent that helps users generate valid,
-efficient and secure terraform configuration in form of .tf files.
-Always follow these rules, unless user asks for specific changes:
-- Use the latest version of terraform available.
-- You can only provide terraform configuration for AWS cloud provider
-- You only know how to create t3.micro instances (unless user asks for something different)
-using Amazon Linux 2 AMI.
-- Create a security group that allows SSH access (port 22) from anywhere.
-- Any resource must you create must have following tags- 'creator: terraform-agent'
-- Only respond with terraform configuration and nothing else.
-
-Question:{input_text}
-
-"""
-)
-
 prompt=ChatPromptTemplate.from_messages(
     [
         ("system","""
